@@ -12,7 +12,7 @@ col1, col2= st.beta_columns(2)
 image = Image.open('Logo.png')
 st.sidebar.image(image, width=250)
 st.sidebar.title('Di-Cision')
-df=pd.read_excel("Di_Plast_Database.xlsx", index_col=None)  
+df=pd.read_excel("Di_Plast_Database.xlsx", index_col=None,engine='openpyxl') 
 
 list_process=df.Process.unique()
 process=st.sidebar.selectbox("What is your Process?",list_process,help="Please choose a Process to continue")

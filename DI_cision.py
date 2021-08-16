@@ -6,7 +6,7 @@ import pandas as pd
 from PIL import Image
 import os
 import base64
-
+st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="wide", page_icon = "favicon.png",)
 #for image rendering with link, magic from https://discuss.streamlit.io/t/href-on-image/9693/4
 @st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
@@ -20,7 +20,7 @@ def get_img_with_href(local_img_path, target_url,width="1"):
     bin_str = get_base64_of_bin_file(local_img_path)
     html_code = f'''
         <a href="{target_url}" target="_blank">
-            <img style="width: {width}vw" position:relative src="data:image/{img_format};base64,{bin_str} " />
+            <img style="width: {width}%" src="data:image/{img_format};base64,{bin_str} " />
         </a>'''
     return html_code
 #-------------------------------------------------------------------------------------------------------
@@ -28,8 +28,8 @@ def get_img_with_href(local_img_path, target_url,width="1"):
 
 
 
-st.set_page_config(page_title="Di-Plast Sensor Selection  ____________",layout="wide", page_icon = "favicon.png")
-col1, col2= st.beta_columns(2)
+
+col1, col2= st.columns(2)
 
 
 
@@ -76,9 +76,16 @@ if cause_snd!="":
 else:
     result_df=cause_df
 
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.write("")
 
 
-SKZ_Logo_html = get_img_with_href('Logo-SKZ.jpg', 'https://www.skz.de',width="30")
+
+SKZ_Logo_html = get_img_with_href('Logo-SKZ.jpg', 'https://www.skz.de',width="15")
 st.sidebar.markdown(SKZ_Logo_html, unsafe_allow_html=True)
 
 #---------------------------------------------columns---------------------------------------------------------------------
@@ -91,7 +98,7 @@ with col1:
     st.title('Suitable surveillance parameters:​') 
     parameters=result_df['Valuetobemonitored'].tolist()
     for item in parameters:
-        if st.button(item, key=item, help=None):
+        if st.button(item, key=item):
            parameter=item
            sensor_df=result_df[result_df["Valuetobemonitored"]==item]
            engineering_flag=sensor_df["additionalengineeringoradaptionadvised"].iloc[0]
@@ -100,7 +107,9 @@ with col1:
         st.write("")
         st.write("")
         st.markdown("__We strongly recommend consultation for the right implementation of the sensor__")
-
+    if (parameter==""):
+        st.write("Please choose a Parameter for Monitoring")
+        
 
 with col2:
     st.title('Suitable Sensor Type:​')
@@ -111,7 +120,7 @@ with col2:
 
     if parameter!="":
         
-        st.write(sensor_df["Manufacturerone"].iloc[0])
-        st.write(sensor_df["Manufacturertwo"].iloc[0])
-        st.write(sensor_df["Manufacturerthree"].iloc[0])
-
+        st.write(f"[{sensor_df['Manufacturerone'].iloc[0]}]({sensor_df['Manufactureronelink'].iloc[0]})")
+        st.write(f"[{sensor_df['Manufacturertwo'].iloc[0]}]({sensor_df['Manufacturertwolink'].iloc[0]})")
+        st.write(f"[{sensor_df['Manufacturerthree'].iloc[0]}]({sensor_df['Manufacturerthreelink'].iloc[0]})")
+       

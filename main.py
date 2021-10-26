@@ -139,6 +139,11 @@ if(st.session_state['choose_cause']==True):
     engineering_flag=""
   
     st.subheader('Suitable surveillance parameters:​') 
+    #if (st.session_state["choose_parameter"]!=True):
+    text_please="<p style='color:Blue;font-size: 1 em;'>Please click on parameter to monitor</p>"
+    st.markdown(text_please, unsafe_allow_html=True)
+
+    
     parameters=result_df['Valuetobemonitored'].tolist()
     for item in parameters:
         if st.button(item, key=item,on_click=on_click_parameter):
@@ -146,16 +151,16 @@ if(st.session_state['choose_cause']==True):
             sensor_df=result_df[result_df["Valuetobemonitored"]==item]
             engineering_flag=sensor_df["additionalengineeringoradaptionadvised"].iloc[0]
     
-    if (parameter=="" and st.session_state["choose_parameter"]==True):
-        st.write("Please choose a Parameter for Monitoring")
-        text="<p style='color:red;'>Please choose a Parameter for Monitoring</p>"
-        st.markdown(text, unsafe_allow_html=True)
-
     
 
-    st.subheader('Suitable Sensor Type:​')
-    if parameter!="":       
-        st.write(sensor_df["SuitableSensoring"].iloc[0])
+    
+    if parameter!="":
+        st.write("")
+        st.write("")
+        st.write("")
+        st.subheader('Suitable Sensor Type:​')       
+        text_sensor=f"<p style='color:Black;font-size: 1.5em;'> {sensor_df['SuitableSensoring'].iloc[0]}</p>"
+        st.markdown(text_sensor, unsafe_allow_html=True)
         
     
 

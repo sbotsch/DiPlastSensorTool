@@ -1,6 +1,9 @@
+
+
 import streamlit as st
 # To make things easier later, we're also importing numpy and pandas for
 # working with sample data.
+
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -78,15 +81,14 @@ else:
 
 st.sidebar.write("")
 st.sidebar.write("")
-st.sidebar.write("")
-st.sidebar.write("")
-st.sidebar.write("")
-st.sidebar.write("")
 
 
 
-SKZ_Logo_html = get_img_with_href('Logo-SKZ.jpg', 'https://www.skz.de',width="15")
+
+SKZ_Logo_html = get_img_with_href('SKZ-Logo.png', 'https://www.skz.de',width="100")
 st.sidebar.markdown(SKZ_Logo_html, unsafe_allow_html=True)
+
+st.sidebar.caption("[Bug reports and suggestions welcome ](mailto:c.kugler@skz.de)")
 
 #---------------------------------------------columns---------------------------------------------------------------------
 

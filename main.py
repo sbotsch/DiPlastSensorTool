@@ -9,6 +9,8 @@ import pandas as pd
 from PIL import Image
 import os
 import base64
+
+from streamlit.state.session_state import SessionState
 st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="centered", page_icon = "favicon.png",)
 #for image rendering with link, magic from https://discuss.streamlit.io/t/href-on-image/9693/4
 @st.cache(allow_output_mutation=True)
@@ -61,7 +63,7 @@ def on_click_parameter():
 #----------------------------------------------------------------------------------------------------
 
 
-
+st.markdown('<style>body{background-color: Blue;}</style>',unsafe_allow_html=True)
 
 
 #image = Image.open('Logo.png')
@@ -141,7 +143,11 @@ if(st.session_state['choose_cause']==True):
     st.subheader('Suitable surveillance parameters:​') 
     #if (st.session_state["choose_parameter"]!=True):
     text_please="<p style='color:Blue;font-size: 1 em;'>Please click on parameter to monitor</p>"
+    
+ 
     st.markdown(text_please, unsafe_allow_html=True)
+   
+
 
     
     parameters=result_df['Valuetobemonitored'].tolist()
@@ -151,28 +157,33 @@ if(st.session_state['choose_cause']==True):
             sensor_df=result_df[result_df["Valuetobemonitored"]==item]
             engineering_flag=sensor_df["additionalengineeringoradaptionadvised"].iloc[0]
     
-    
+    text_line="<hr/>"
+    st.markdown(text_line, unsafe_allow_html=True)    
 
     
     if parameter!="":
-        st.write("")
-        st.write("")
-        st.write("")
-        st.subheader('Suitable Sensor Type:​')       
+    
+        
+        st.subheader('Suitable Sensor Type:​')   
+       
         text_sensor=f"<p style='color:Black;font-size: 1.5em;'> {sensor_df['SuitableSensoring'].iloc[0]}</p>"
         st.markdown(text_sensor, unsafe_allow_html=True)
+        text_line="<hr/>"
+        st.markdown(text_line, unsafe_allow_html=True)  
         
     
-
+     
     if parameter!="" and st:
-        st.subheader('Manufacturers for the shown type of sensors')
-        st.write(f"[{sensor_df['Manufacturerone'].iloc[0]}]({sensor_df['Manufactureronelink'].iloc[0]})")
-        st.write(f"[{sensor_df['Manufacturertwo'].iloc[0]}]({sensor_df['Manufacturertwolink'].iloc[0]})")
-        st.write(f"[{sensor_df['Manufacturerthree'].iloc[0]}]({sensor_df['Manufacturerthreelink'].iloc[0]})")
+       
+        st.subheader('Manufacturers for the shown type of sensors:')
+      
+        st.write(f"- [{sensor_df['Manufacturerone'].iloc[0]}]({sensor_df['Manufactureronelink'].iloc[0]})")
+        st.write(f"- [{sensor_df['Manufacturertwo'].iloc[0]}]({sensor_df['Manufacturertwolink'].iloc[0]})")
+        st.write(f"- [{sensor_df['Manufacturerthree'].iloc[0]}]({sensor_df['Manufacturerthreelink'].iloc[0]})")
     if engineering_flag !="" and engineering_flag=="yes" and st.session_state["choose_parameter"]==True:
         st.write("")
-        st.write("")
-        st.write("")
-        text_recommend="<p style='color:red;'>We strongly recommend consultation for the right implementation of the sensor</p>"
+        
+        
+        text_recommend="<p style='color:red;font-size: 1.2em;'>We strongly recommend consultation for the right implementation of the sensor</p>"
         st.markdown(text_recommend, unsafe_allow_html=True)
         

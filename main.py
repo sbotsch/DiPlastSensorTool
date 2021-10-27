@@ -11,7 +11,7 @@ import os
 import base64
 
 from streamlit.state.session_state import SessionState
-st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="centered", page_icon = "favicon.png",)
+st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="wide", page_icon = "favicon.png",menu_items={"About":"Made by SKZ","Report a Bug":None,"Get help":None })
 #for image rendering with link, magic from https://discuss.streamlit.io/t/href-on-image/9693/4
 @st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
@@ -29,7 +29,28 @@ def get_img_with_href(local_img_path, target_url,width="1"):
         </a>'''
     return html_code
 
+#remove colored bar and menu
+#header {visibility: hidden;}
+#MainMenu {visibility: hidden;} #hides Menu in Style
+hide_streamlit_style = """
+            <style>
+            
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
+#remove padding
+
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}4em;
+        padding-left: {padding}4em;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -67,7 +88,7 @@ st.markdown('<style>body{background-color: Blue;}</style>',unsafe_allow_html=Tru
 
 
 #image = Image.open('Logo.png')
-Logo_html = get_img_with_href('Logo.PNG', 'https://www.nweurope.eu/projects/project-search/di-plast-digital-circular-economy-for-the-plastics-industry/',width="100")
+Logo_html = get_img_with_href('Logo.PNG', 'https://www.nweurope.eu/projects/project-search/di-plast-digital-circular-economy-for-the-plastics-industry/',width="80")
 st.sidebar.markdown(Logo_html, unsafe_allow_html=True)
 
 #st.sidebar.image(image, width=250)
@@ -128,10 +149,21 @@ if (st.session_state['choose_problem']==True):
 
 
 
-SKZ_Logo_html = get_img_with_href('SKZ-Logo.png', 'https://www.skz.de',width="100")
+SKZ_Logo_html = get_img_with_href('SKZ-Logo.png', 'https://www.skz.de',width="70")
 st.sidebar.markdown(SKZ_Logo_html, unsafe_allow_html=True)
 
 st.sidebar.caption("[Bug reports and suggestions welcome ](mailto:c.kugler@skz.de)")
+if(st.session_state['choose_problem']!=True):
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.text('')
+        st.subheader('')
+
 
 #---------------------------------------------columns---------------------------------------------------------------------
 
@@ -144,7 +176,7 @@ if(st.session_state['choose_cause']==True):
     #if (st.session_state["choose_parameter"]!=True):
     text_please="<p style='color:Blue;font-size: 1 em;'>Please click on parameter to monitor</p>"
     
- 
+    text_please="<p style='color:Blue;font-size: 1.2 em;'> </p>"
     st.markdown(text_please, unsafe_allow_html=True)
    
 

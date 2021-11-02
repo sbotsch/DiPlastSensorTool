@@ -11,7 +11,7 @@ import os
 import base64
 
 from streamlit.state.session_state import SessionState
-st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="wide", page_icon = "favicon.png",menu_items={"About":"Made by SKZ","Report a Bug":None,"Get help":None })
+st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="wide", page_icon = "favicon.png")#menu_items={"About":"Made by SKZ","Report a Bug":None,"Get help":None })
 #for image rendering with link, magic from https://discuss.streamlit.io/t/href-on-image/9693/4
 @st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
@@ -175,8 +175,6 @@ if(st.session_state['choose_cause']==True):
     st.subheader('Suitable surveillance parameters:​') 
     #if (st.session_state["choose_parameter"]!=True):
     text_please="<p style='color:Blue;font-size: 1 em;'>Please click on parameter to monitor</p>"
-    
-    text_please="<p style='color:Blue;font-size: 1.2 em;'> </p>"
     st.markdown(text_please, unsafe_allow_html=True)
    
 

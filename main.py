@@ -69,6 +69,12 @@ if 'choose_parameter' not in st.session_state:
 
 def on_change_process():
     st.session_state['choose_process'] = True
+    
+    st.session_state['choose_problem'] = False
+    st.session_state['choose_cause'] = False
+    st.session_state['choose_parameter'] = False
+
+
     print("CHANGE_process")
 
 def on_change_problem():

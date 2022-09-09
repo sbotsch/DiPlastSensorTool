@@ -10,13 +10,14 @@ from PIL import Image
 import os
 import base64
 
-from streamlit.state.session_state import SessionState
+
 
 #set page icon,title and layout
 st.set_page_config(page_title="Di-Plast Sensor Selection ",layout="wide", page_icon = "favicon.png")
 
 # one could specify the burger menu
 #menu_items={"About":"Made by SKZ","Report a Bug":None,"Get help":None })
+
 
 
 #for image rendering with link, magic from https://discuss.streamlit.io/t/href-on-image/9693/4

@@ -167,8 +167,8 @@ with st.sidebar:
 
     SKZ_Logo_html = get_img_with_href('SKZ-Logo.png', 'https://www.skz.de',width="70")
     st.markdown(SKZ_Logo_html, unsafe_allow_html=True)
-
-    st.caption("[Bug reports and suggestions welcome ](mailto:c.kugler@skz.de)")
+    st.markdown('<a href="mailto:c.kugler@skz.de?subject= Feedback Di-Plast Sensor Tool">Bug reports and suggestions welcome</a>', unsafe_allow_html=True)
+    #st.caption("[Bug reports and suggestions welcome ](mailto:c.kugler@skz.de)")
     if(st.session_state['choose_problem']!=True):
             st.write("")
             st.write("")

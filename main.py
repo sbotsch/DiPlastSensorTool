@@ -169,7 +169,7 @@ with st.sidebar:
     SKZ_Logo_html = get_img_with_href('SKZ-Logo.png', 'https://www.skz.de',width="70")
     st.markdown(SKZ_Logo_html, unsafe_allow_html=True)
     st.markdown('<a href="mailto:c.kugler@skz.de?subject= Feedback Di-Plast Sensor Tool">Bug reports and suggestions welcome</a>', unsafe_allow_html=True)
-    #st.caption("[Bug reports and suggestions welcome ](mailto:c.kugler@skz.de)")
+    st.caption("Christoph Kugler (c.kugler@skz.de)")
     if(st.session_state['choose_problem']!=True):
             st.write("")
             st.write("")
@@ -183,6 +183,20 @@ with st.sidebar:
 
 
     #---------------------------------------------columns---------------------------------------------------------------------
+if(st.session_state['choose_cause']==False):
+    st.header('About')
+    st.write('''This is the Di-Plast Sensor Selection Tool. The tool is meant to be used for process troubleshooting in plastics conversion. It supports in narrowing down the problem causes and finding a suitable monitoring strategy.
+    You can start instantly by following the selections one by one starting on the top left side with the process. A dropdown shows all available selections. (More alternatives to be added in the future.)
+    While answering what is the process and what is the problem is usually not complicated it can be complicated to define the cause for the problem. Since all the previously made selections stay active you can change any selection at any time during the process, but it may alter the selections that are based on the previous ones if the case is not available (i.e. sagging in injection moulding).
+    After making the selections in the left side area the suitable surveillance parameters are displayed in the upper centre. Clicking on one of the parameters shows suitable sensors, manufacturers for those sensors (direct link) and an advice whether consulting for implementation is necessary.''')
+    st.write('''The Sensor Selection tool is funded by the [Interreg North-West Europe program (Interreg NWE, NWE729)](https://www.nweurope.eu/projects/project-search/di-plast-digital-circular-economy-for-the-plastics-industry/), project Di-Plast - Digital Circular Economy for the Plastics Industry''')
+
+    st.header('Disclaimer of Warranty')
+    st.write('''There is no warranty for the program, to the extent permitted by applicable law. Except when otherwise stated in writing the copyright holders and/or other parties provide the program “as is” without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the program is with you. should the program prove defective, you assume the cost of all necessary servicing, repair or correction.''')
+    st.header('Limitation of Liability')
+    st.write('''In no event unless required by applicable law or agreed to in writing will any copyright holder, or any other party who modifies and/or conveys the program as permitted above, be liable to you for damages, including any general, special, incidental or consequential damages arising out of the use or inability to use the program (including but not limited to loss of data or data being rendered inaccurate or losses sustained by you or third parties or a failure of the program to operate with any other programs), even if such holder or other party has been advised of the possibility of such damages.''')
+
+
 
 if(st.session_state['choose_cause']==True):
 #st.write(result_df)
@@ -222,7 +236,7 @@ if(st.session_state['choose_cause']==True):
      
     if parameter!="" and st:
        
-        st.subheader('Manufacturers for the shown type of sensors:')
+        st.subheader(' Examples of Manufacturers of the shown type of sensors:')
       
         st.write(f"- [{sensor_df['Manufacturerone'].iloc[0]}]({sensor_df['Manufactureronelink'].iloc[0]})")
         st.write(f"- [{sensor_df['Manufacturertwo'].iloc[0]}]({sensor_df['Manufacturertwolink'].iloc[0]})")

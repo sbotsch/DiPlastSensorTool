@@ -170,6 +170,7 @@ with st.sidebar:
     st.markdown(SKZ_Logo_html, unsafe_allow_html=True)
     st.markdown('<a href="mailto:c.kugler@skz.de?subject= Feedback Di-Plast Sensor Tool">Bug reports and suggestions welcome</a>', unsafe_allow_html=True)
     st.caption("Christoph Kugler (c.kugler@skz.de)")
+    st.write("[Back to the Di-Plast Knowledge Hub](https://di-plast.sis.cs.uos.de/)")
     if(st.session_state['choose_problem']!=True):
             st.write("")
             st.write("")
@@ -180,7 +181,7 @@ with st.sidebar:
             st.write("")
             st.text('')
             st.subheader('')
-    st.write("[Back to the Di-Plast Knowledge Hub](https://di-plast.sis.cs.uos.de/)")
+    
             
 
 

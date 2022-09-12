@@ -180,6 +180,8 @@ with st.sidebar:
             st.write("")
             st.text('')
             st.subheader('')
+    st.write("[Back to the Di-Plast Knowledge Hub](https://di-plast.sis.cs.uos.de/)")
+            
 
 
     #---------------------------------------------columns---------------------------------------------------------------------
@@ -225,7 +227,7 @@ if(st.session_state['choose_cause']==True):
     if parameter!="":
     
         
-        st.subheader('Suitable Sensor Type:​')   
+        st.subheader('Suitable sensor type:​')   
        
         text_sensor=f"<p style='color:Black;font-size: 1.5em;'> {sensor_df['SuitableSensoring'].iloc[0]}</p>"
         st.markdown(text_sensor, unsafe_allow_html=True)
@@ -236,7 +238,7 @@ if(st.session_state['choose_cause']==True):
      
     if parameter!="" and st:
        
-        st.subheader(' Examples of Manufacturers of the shown type of sensors:')
+        st.subheader(' Examples of manufacturers of the shown type of sensors:')
       
         st.write(f"- [{sensor_df['Manufacturerone'].iloc[0]}]({sensor_df['Manufactureronelink'].iloc[0]})")
         st.write(f"- [{sensor_df['Manufacturertwo'].iloc[0]}]({sensor_df['Manufacturertwolink'].iloc[0]})")
